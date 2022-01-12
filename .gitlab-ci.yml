@@ -1,0 +1,13 @@
+image: mcr.microsoft.com/dotnet/sdk:6.0
+
+stages:
+  - build
+    
+before_script:
+  - "cd TestAppWeb"
+  - "dotnet restore"
+    
+Build:
+  stage: build
+  script:
+    - "dotnet build -c Release --no-self-contained"
