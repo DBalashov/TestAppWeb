@@ -1,0 +1,22 @@
+@model WeatherForecast[]
+
+<style>
+    td{
+        text-align: left;
+        border: 1px solid silver;
+    }
+</style>
+<div class="text-center">
+    <h1 class="display-4">Weather</h1>
+
+    <table>
+        @foreach (var key in Model)
+        {
+            <tr>
+                <td>@key.Date</td>
+                <td>@key.Summary</td>
+                <td>@key.TemperatureC</td>
+            </tr>
+        }
+    </table>
+</div>

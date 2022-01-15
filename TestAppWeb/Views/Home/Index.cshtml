@@ -1,4 +1,4 @@
-﻿@model Dictionary<string, string>
+﻿@model HomeIndexModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -10,10 +10,18 @@
     }
 </style>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-
     <table>
-        @foreach (var key in Model!.OrderBy(p => p.Key))
+        @foreach (var key in Model.Interfaces)
+        {
+            <tr>
+                <td>@key.Name</td>
+                <td><pre>@Html.Raw(key.Addresses)</pre></td>
+            </tr>
+        }
+    </table>
+    <br/>
+    <table>
+        @foreach (var key in Model.Env.OrderBy(p => p.Key))
         {
             <tr>
                 <td>@key.Key</td>

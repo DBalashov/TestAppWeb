@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "TestApi": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:7500",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

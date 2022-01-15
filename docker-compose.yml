@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  web:
+    container_name: test-web
+    build:
+      context: TestAppWeb
+      dockerfile: Dockerfile
+    ports:
+      - "5000:3500"
+  
+  api:
+    container_name: test-web-api
+    hostname: hostapi
+    build:
+      context: TestApi
+      dockerfile: Dockerfile
+    ports:
+      - "7500:7500"
