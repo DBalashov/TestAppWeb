@@ -40,7 +40,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Data()
     {
         var c = new HttpClient();
-        var r = await c.GetFromJsonAsync<WeatherForecast[]>("http://localhost:7500/WeatherForecast");
+        var r = await c.GetFromJsonAsync<WeatherForecast[]>("http://hostapi:7500/WeatherForecast");
         return View(r);
     }
 

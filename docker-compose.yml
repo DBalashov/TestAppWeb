@@ -4,16 +4,16 @@ services:
   web:
     container_name: test-web
     build:
-      context: TestAppWeb
+      context: ./TestAppWeb
       dockerfile: Dockerfile
     ports:
-      - "5000:3500"
+      - "5000:5000"
   
   api:
     container_name: test-web-api
     hostname: hostapi
     build:
-      context: TestApi
+      context: ./TestApi
       dockerfile: Dockerfile
     ports:
       - "7500:7500"

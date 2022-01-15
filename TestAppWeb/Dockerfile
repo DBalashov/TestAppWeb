@@ -1,13 +1,14 @@
 ﻿# docker build -t test-app-web -f Dockerfile . --no-cache
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0
+FROM mcr.microsoft.com/dotnet/sdk:6.0 as build-env
 WORKDIR /app
 
-COPY . .
-RUN dotnet build -c Release -r win-x64 --no-self-contained
+COPY . ./
+RUN dotnet build -c Release -r win-x64 --no-self-contained -o out
 
-COPY /bin/Release/net6.0/win-x64/ /app/
-COPY /wwwroot/ /App/wwwroot/
+FROM mcr.microsoft.com/dotnet/sdk:6.0
+WORKDIR /app
+COPY --from=build-env /app/out .
 
 EXPOSE 5000/tcp
 
