@@ -1,5 +1,5 @@
 ﻿# docker build -t test-app-web -f Dockerfile . --no-cache
-
+# 716 MB
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as build-env
 WORKDIR /app
 
