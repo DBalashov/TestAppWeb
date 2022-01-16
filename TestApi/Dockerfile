@@ -8,7 +8,7 @@ COPY . ./
 RUN dotnet build -c Release -r linux-x64 --self-contained -o out
 
 FROM ubuntu:18.04
-RUN apt-get update -qq && apt-get install -y -qq libssl-dev
+RUN apt-get update -qq && apt-get install -y -qq libssl-dev libgdiplus
 WORKDIR /app
 COPY --from=build-env /app/out .
 RUN chmod +x ./TestApi
