@@ -1,15 +1,19 @@
 ﻿# docker build -t test-api -f Dockerfile . --no-cache
+# ~220 MB
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as build-env
 WORKDIR /app
 
 COPY . ./
-RUN dotnet build -c Release -r win-x64 --no-self-contained -o out
+RUN dotnet build -c Release -r linux-x64 --self-contained -o out
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0
+FROM ubuntu:18.04
+RUN apt-get update -qq && apt-get install -y -qq libssl-dev
 WORKDIR /app
 COPY --from=build-env /app/out .
+RUN chmod +x ./TestApi
 
 EXPOSE 7500/tcp
 
-ENTRYPOINT ["dotnet", "TestApi.dll"]
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+ENTRYPOINT ["./TestApi"]
