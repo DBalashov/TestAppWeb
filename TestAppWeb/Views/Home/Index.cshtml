@@ -1,6 +1,8 @@
-﻿@model HomeIndexModel
+﻿@using System.Diagnostics
+@model HomeIndexModel
 @{
     ViewData["Title"] = "Home Page";
+    var p = Process.GetCurrentProcess();
 }
 
 <style>
@@ -9,7 +11,10 @@
         border: 1px solid silver;
     }
 </style>
-<div class="text-center">
+<div class="text-left">
+    <div>Environment.ProcessorCount: @Environment.ProcessorCount</div>
+    <div>GC.GetTotalMemory: @GC.GetTotalMemory(false) bytes</div>
+    <div>VirtualMemory / MaxWorkingSet / WorkingSet: @(p.VirtualMemorySize64/1048576) MB / @p.MaxWorkingSet.ToInt64() bytes / @(p.WorkingSet64/1048576) MB</div>
     <table>
         @foreach (var key in Model.Interfaces)
         {

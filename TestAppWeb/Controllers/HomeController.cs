@@ -7,7 +7,9 @@ namespace TestAppWeb.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    readonly ILogger<HomeController> _logger;
+
+    static readonly List<byte[]> l = new();
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -33,6 +35,7 @@ public class HomeController : Controller
                                            };
                                        })
                                        .ToArray();
+        l.Add(new byte[1048576*10]);
 
         return View(m);
     }
