@@ -13,6 +13,9 @@
       <Content Include="..\docker-compose.yml">
         <Link>docker-compose.yml</Link>
       </Content>
+      <Content Include="..\nginx.conf">
+        <Link>nginx.conf</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
