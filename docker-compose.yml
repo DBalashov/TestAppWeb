@@ -4,26 +4,21 @@ version: '3.4'
 
 services:
   web:
-    container_name: test-web
+    hostname: hostweb
     build:
       context: ./TestAppWeb
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5000"
     deploy:
-      resources:
-        limits:
-          memory: 128M
-          cpus: '0.25'
       restart_policy:
         condition: on-failure
         max_attempts: 3
   
   api:
-    container_name: test-web-api
     hostname: hostapi
     build:
       context: ./TestApi
       dockerfile: Dockerfile
     ports:
-      - "7500:7500"
+      - "7500"
